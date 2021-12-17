@@ -8,6 +8,11 @@ function handleReady() {
 
 }
 
+let ajaxOption = {
+  method: 'GET',
+  url: '/random'
+}
+
 function onSubmit(event) {
   event.preventDefault();
 
@@ -19,14 +24,15 @@ function onSubmit(event) {
   console.log('guess', guess);
   
   $.ajax({
-    method: 'POST',
+    method: 'POST',//sends to server.js
     url: '/random',
     data: guess
   })
     .then((response) => {
       console.log('POST response', response);
-      refresh();
-      checkGuess();
+      refresh(response);
+      render(response);
+      //checkGuess();
     })
 
     $('#playerOne').val('');
@@ -43,13 +49,22 @@ function refresh() {
 
   $.ajax(ajaxOption)
     .then((response) => {
+      
       console.log('response request', response);
     })
 }
-
   
+  function render(response){
+    $('#answer').empty();
 
-function checkGuess(){
+    $('#answer').append(`
+      <div id = "right">
+        ${response}
+      </div>
+    `)
+  }
+
+/* function checkGuess(){
   let ajaxOption = {
     method: 'GET',
     url: '/guess-random',
@@ -58,8 +73,8 @@ function checkGuess(){
     .then((respond) =>{
       console.log('respond request', respond);
     });
-  $('#answer').append(respond)
-  }
+  //$('#answer').append(respond)
+  } */
   
 
 

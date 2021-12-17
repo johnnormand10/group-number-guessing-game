@@ -19,23 +19,47 @@ app.listen(PORT, () => {
 })
 
 
-let numArray = {
+let numObject = {
   // store our guessing numbers
 };
+console.log(numObject);//seeing what is in numObject
 
 
 app.get('/random', (req, res) => {
   console.log('in GET /random');
-  res.send(numArray);
+  res.send(numObject);
 })
 
 
 
 app.post('/random', (req, res) => {
-  console.log('in POST', req.body);
+  console.log('in POST', req.body);// req.body === guess{}
   // numArray.push(req.body);
+  newObject = {
+    playerOne: req.body.playerOne,
+    playerTwo: req.body.playerTwo,
+    playerThree: req.body.playerThree
+  }
 
-  res.sendStatus(201);
+    
+  if(newObject.playerOne === randomNum){
+    console.log(newObject.playerOne);
+    res.send('Player One has guessed correctly')
+    }
+    else if(newObject.playerTwo === randomNum){
+      console.log('Player Two has guessed correctly');
+      res.send('Player Two has guessed correctly')
+    }
+    else if(newObject.playerThree === randomNum){
+      console.log('Player Three has guessed correctly');
+      res.send('Player Three has guessed correctly')
+    }
+    else {
+      console.log('No one has guessed correctly');
+      res.send('No one has guessed correctly')
+    }
+
+  res.send(newObject);
 })
 
 //creating random number
@@ -43,36 +67,11 @@ let randomNum = Math.floor(Math.random() * (1 + 3 - 1)+ 1);
   randomNum = randomNum.toString();
   console.log(randomNum);
 
-  // app.get('/random-number', (req, res) =>{
-  //   console.log('in GET /random-number');
-  //   res.send(randomNum);
-  // })
-
-  // app.post('/random-number', (req, res) =>{
-  //   console.log('in POST /random-number',req.body);
-    
-
-  //   res.sendStatus(201);
-  // })
-  app.get('/guess-random', (req, res) => {
-    console.log(req.data);
-    
-      // if(newArray.playerOne.val() === randomNum){
-      //   console.log(req.query.playerOne.val());
-      //   res.send('Player One has guessed correctly')
-      //   }
-      //   else if(`${guess.playerTwo}` === randomNum){
-      //     console.log('Player Two has guessed correctly');
-      //     res.send('Player Two has guessed correctly')
-      //   }
-      //   else if(`${guess.playerThree}` === randomNum){
-      //     console.log('Player Three has guessed correctly');
-      //     res.send('Player Three has guessed correctly')
-      //   }
-      //   else {
-      //     console.log('No one has guessed correctly');
-      //     res.send('No one has guessed correctly')
-      //   }
-      // }
-  })
+// app.get('/guess-random', (req, res) => {
+//   console.log(req.data);
   
+/* 
+app.post('/guess-random', (req, res) =>{
+  console.log(req.data);
+  
+}) */
