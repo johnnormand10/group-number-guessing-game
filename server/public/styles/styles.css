@@ -1,0 +1,33 @@
+body{
+    background-image: url(https://rabbisacks.org/wp-content/uploads/2020/05/question-mark-background-in-vector-1.jpg) ;
+}
+#title{
+    text-align: center;
+    background: radial-gradient(aqua, transparent);
+}
+form{
+    text-align: center;
+    margin-top: 10rem;
+}
+input{
+    height: 2rem;
+    margin-right: 5px;
+}
+#playerOne{
+    border: 2px solid #f97046;
+}
+#playerTwo{
+    border: 2px solid #2f292b;
+}
+#playerThree{
+    border: 2px solid #58bac0;
+}
+#right{
+    display: inline-flexbox;
+    align-content: center;
+    text-align: center;
+    margin-top: 20rem;
+    font-size: 2.5rem;
+    background: #58bac2;
+    border-radius: 5rem;
+}

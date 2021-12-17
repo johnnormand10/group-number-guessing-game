@@ -58,12 +58,10 @@ app.post('/random', (req, res) => {
       console.log('No one has guessed correctly');
       res.send('No one has guessed correctly')
     }
-
-  res.send(newObject);
 })
 
 //creating random number
-let randomNum = Math.floor(Math.random() * (1 + 3 - 1)+ 1);
+let randomNum = Math.floor(Math.random() * (1 + 25 - 1)+ 1);
   randomNum = randomNum.toString();
   console.log(randomNum);
 
